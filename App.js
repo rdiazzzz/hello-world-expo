@@ -7,8 +7,9 @@ import {
   TouchableOpacity,
   ToastAndroid,
   useColorScheme,
-  Switch,
 } from "react-native";
+import { version } from "./src/config.json";
+import * as Linking from "expo-linking";
 
 export default function App() {
   // detect device dark or light mode
@@ -24,8 +25,6 @@ export default function App() {
 
   const themeTextStyle =
     colorScheme === "light" ? styles.lightText : styles.darkText;
-
-  // button switch dark or light mode
 
   // toast message
   function showToast() {
@@ -45,13 +44,22 @@ export default function App() {
     );
   }
 
-  function switchTheme() {
-    if (colorScheme === "light") {
-      console.log("light");
-    } else {
-      console.log("dark");
-    }
+  function urlSupport() {
+    ToastAndroid.showWithGravity(
+      "Thanks for the Support !",
+      ToastAndroid.SHORT,
+      ToastAndroid.CENTER
+    );
+    Linking.openURL("https://sociabuzz.com/zenkaa7/tribe");
   }
+
+  // function switchTheme() {
+  //   if (colorScheme === "light") {
+  //     console.log("light");
+  //   } else {
+  //     console.log("dark");
+  //   }
+  // }
 
   return (
     <View style={[styles.container, themeContainerStyle]}>
@@ -62,8 +70,13 @@ export default function App() {
       </TouchableOpacity>
 
       <TouchableOpacity style={[themeIconStyle]} onPress={switchThemeToast} />
-
       <Text style={[themeTextStyle]}>{themeText}</Text>
+
+      <Text style={styles.version}>{version}</Text>
+
+      <TouchableOpacity onPress={urlSupport}>
+        <Text style={styles.support}>❤️</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -95,7 +108,7 @@ const styles = StyleSheet.create({
     height: 30,
     position: "absolute",
     top: 30,
-    left: 20,
+    left: 10,
     borderRadius: 50,
   },
 
@@ -105,7 +118,7 @@ const styles = StyleSheet.create({
     height: 30,
     position: "absolute",
     top: 30,
-    left: 20,
+    left: 10,
     borderRadius: 50,
   },
 
@@ -115,7 +128,7 @@ const styles = StyleSheet.create({
     color: "#FFCC66",
     position: "absolute",
     top: 27,
-    left: 60,
+    left: 50,
   },
 
   darkText: {
@@ -124,6 +137,21 @@ const styles = StyleSheet.create({
     color: "#4287f5",
     position: "absolute",
     top: 27,
-    left: 60,
+    left: 50,
+  },
+
+  version: {
+    color: "#565656",
+    opacity: 50,
+    position: "absolute",
+    bottom: 0,
+    right: 0,
+  },
+
+  support: {
+    fontSize: 25,
+    position: "absolute",
+    bottom: 480,
+    left: 160,
   },
 });
