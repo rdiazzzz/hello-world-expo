@@ -20,6 +20,11 @@ export default function App() {
   const themeIconStyle =
     colorScheme === "light" ? styles.lightIcon : styles.darkIcon;
 
+  const themeText = colorScheme === "light" ? "Light mode" : "Dark mode";
+
+  const themeTextStyle =
+    colorScheme === "light" ? styles.lightText : styles.darkText;
+
   // button switch dark or light mode
 
   // toast message
@@ -32,7 +37,7 @@ export default function App() {
     );
   }
 
-  function switchModeToast() {
+  function switchThemeToast() {
     ToastAndroid.showWithGravity(
       "Switch Light or Dark mode (Coming Soon)",
       ToastAndroid.SHORT,
@@ -40,7 +45,7 @@ export default function App() {
     );
   }
 
-  function switchMode() {
+  function switchTheme() {
     if (colorScheme === "light") {
       console.log("light");
     } else {
@@ -56,7 +61,9 @@ export default function App() {
         <Text style={styles.text}>Hello World</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={[themeIconStyle]} onPress={switchModeToast} />
+      <TouchableOpacity style={[themeIconStyle]} onPress={switchThemeToast} />
+
+      <Text style={[themeTextStyle]}>{themeText}</Text>
     </View>
   );
 }
@@ -100,5 +107,23 @@ const styles = StyleSheet.create({
     top: 30,
     left: 20,
     borderRadius: 50,
+  },
+
+  lightText: {
+    fontSize: 25,
+    fontWeight: "bold",
+    color: "#FFCC66",
+    position: "absolute",
+    top: 27,
+    left: 60,
+  },
+
+  darkText: {
+    fontSize: 25,
+    fontWeight: "bold",
+    color: "#4287f5",
+    position: "absolute",
+    top: 27,
+    left: 60,
   },
 });

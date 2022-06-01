@@ -1,5 +1,5 @@
 {
-  "name": "helloworld-reactnative",
+  "name": "hello-world-expo",
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
@@ -25,5 +25,13 @@
   "private": true,
   "description": "Show hello world message.",
   "author": "zenkaa7",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zenkaa7/hello-world-expo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zenkaa7/hello-world-expo/issues"
+  },
+  "homepage": "https://github.com/zenkaa7/hello-world-expo#readme"
 }
